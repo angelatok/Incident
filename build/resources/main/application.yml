@@ -1,0 +1,15 @@
+server:
+  port: 8081
+  
+spring:
+  data:
+    mongodb:
+      database: incident
+      host: localhost
+      port: 27017
+      
+  main:
+    banner-mode: off
+ 
+
+      
