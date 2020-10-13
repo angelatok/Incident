@@ -44,7 +44,7 @@ public class IncidentPostController {
 //		
 //	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Void>  deleteById(@PathVariable String id)
 	{
 		if(service.deleteById(id)){

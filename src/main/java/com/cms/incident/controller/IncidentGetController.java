@@ -27,14 +27,19 @@ public class IncidentGetController {
 	public IncidentGetController(IncidentService incidentService) {
 		this.service = incidentService;
 	}
+	/**
+	 * This API return all Incident from the database
+	 * 
+	 * @return
+	 */
 	@GetMapping
 	public List<IncidentModel> getAll(){
 		return service.getAll();
 	}
+	
 	/**
-	 * This should return list of incident in a workspace.
-	 * if user does not project workspace detail, only incident that is pubilc is return.
-	 * 
+	 * 	This API return a summary list of incident base on the workspace id provided
+	 * @param workspaceId
 	 * @return
 	 */
 	@GetMapping("/wsid/{wsid}")
@@ -42,12 +47,23 @@ public class IncidentGetController {
 		//TODO  assuming cxtOrigin is the workspace he is currently login
 		return service.getAllByWs(workspaceId);
 	}
-	
+	/**
+	 * This API return a summary list of incident base on the workspace id provided
+	 * @param workspaceId
+	 * @return
+	 */
 	@GetMapping("/shortList/{wsid}")
 	public List<IIncidentModel> getSummeryAll(@PathVariable("wsid") String workspaceId){
 		return service.getIncidentSummery(workspaceId);
 	}
-	
+	/**
+	 * This API return a list of incident base on the request size and page from db.
+	 * 
+	 * @param page
+	 * @param size
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/page")
 	public List<IIncidentModel> getSummeryPage(
 			@RequestParam(value="pgnum", required = false) Integer page,
@@ -55,6 +71,7 @@ public class IncidentGetController {
 			@RequestParam(value="wsid") String id){
 		return service.getIncidentSummeryPg(id, page, size);
 	}
+	
 	
 	@GetMapping("/{name}")
 	public ResponseEntity<IncidentModel> getName(@PathVariable("name") String name){

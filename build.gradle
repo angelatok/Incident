@@ -1,16 +1,30 @@
-plugins {
-	id 'org.springframework.boot' version '2.3.3.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'java'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.4.RELEASE")
+    }
 }
 
-group = 'com.ng.cms'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+	group = 'com.ng.cms'
+    baseName = 'Incident'
+    version =  '0.1.0'
+}
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
+
+sourceCompatibility = '11'
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
@@ -30,6 +44,3 @@ dependencies {
 	}
 }
 
-test {
-	useJUnitPlatform()
-}

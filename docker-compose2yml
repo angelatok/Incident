@@ -1,0 +1,17 @@
+version: "3"
+services:
+  mymongodb:
+    image: mongo
+    container_name: "mymongodb"
+    ports:
+      - 27017:27017
+    
+     
+  incident:
+    image: incident
+    container_name: "incident"
+    ports:
+      - 8081:8081
+    depends_on:
+      - mymongodb
+
