@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: incident
+      
+  main:
+    banner-mode: off
+     
+---
+
+spring:
+  profiles:  - docker
+  data:
+    mongodb:
+      host: mymongodb
+      port: 27017
+      database: incident
+      
+  main:
+    banner-mode: off
